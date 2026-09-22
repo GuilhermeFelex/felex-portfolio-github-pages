@@ -1,9 +1,11 @@
 /* Estrutura compartilhada: limite da página, cabeçalho e rodapé. */
 .page-shell { width: var(--page); margin: 0 auto; border-inline: 1px solid var(--line); }
 .site-header { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; height: 88px; padding-inline: 42px; border-bottom: 1px solid var(--line); }
-.brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .2em; }
-.brand-mark { display: grid; width: 34px; aspect-ratio: 1; place-items: center; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-raised); color: var(--text); font-size: 14px; }
-.brand-mark span { color: var(--accent); }
+.brand { display: inline-flex; align-items: center; flex-shrink: 0; gap: 11px; text-decoration: none; }
+.brand-logo { display: block; width: 43px; height: 40px; object-fit: contain; flex: none; }
+.brand-wordmark { display: inline-flex; align-items: baseline; color: var(--text); font: 700 23px/1 var(--sans); letter-spacing: -.055em; white-space: nowrap; }
+.brand-wordmark span:last-child { color: var(--accent); }
+.brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 7px; border-radius: 3px; }
 .site-nav { display: flex; gap: clamp(22px, 2.5vw, 42px); font: 500 12px var(--mono); }
 .site-nav a, .footer-links a, .site-footer > a { color: var(--muted); transition: color .2s ease; }
 .site-nav a:hover, .site-nav a:focus-visible, .footer-links a:hover, .footer-links a:focus-visible, .site-footer > a:hover, .site-footer > a:focus-visible { color: var(--accent); }
@@ -11,7 +13,7 @@
 .menu-button { display: none; color: var(--text); background: transparent; border: 0; font: 13px var(--mono); }
 .site-footer { display: grid; grid-template-columns: 1.4fr 1fr 1fr; align-items: center; min-height: 100px; padding-inline: 42px; border-top: 1px solid var(--line); color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
 .footer-brand { display: flex; align-items: center; gap: 18px; }
-.footer-brand strong { color: var(--text); letter-spacing: .25em; }
+.footer-brand strong { color: var(--text); letter-spacing: .15em; }
 .footer-brand span { font-size: 10px; text-transform: none; }
 .footer-links { display: flex; justify-content: center; gap: 24px; }
 .site-footer > a { justify-self: end; }
