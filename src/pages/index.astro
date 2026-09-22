@@ -21,19 +21,13 @@ const socialLinks = [
 ].filter((item) => item.href);
 
 // SVGs entram no HTML final durante a build, sem chamadas externas em produção.
-const stackIcons: Record<string, { svg: string; color: string }> = {
-  'Next.js': { svg: nextIcon, color: '#ffffff' },
-  React: { svg: reactIcon, color: '#61dafb' },
-  TypeScript: { svg: typescriptIcon, color: '#3178c6' },
-  'Node.js': { svg: nodeIcon, color: '#5fa04e' },
-  PostgreSQL: { svg: postgresqlIcon, color: '#4169e1' },
-  Supabase: { svg: supabaseIcon, color: '#3ecf8e' },
-  Docker: { svg: dockerIcon, color: '#2496ed' },
-  n8n: { svg: n8nIcon, color: '#ea4b71' },
-  UiPath: { svg: uipathIcon, color: '#fa4616' },
-  OpenAI: { svg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2a4.2 4.2 0 0 1 6.8 4.9 4.2 4.2 0 0 1 1 7.7 4.2 4.2 0 0 1-6.2 4.6 4.2 4.2 0 0 1-7.4-2.8 4.2 4.2 0 0 1-1.7-7.5A4.2 4.2 0 0 1 12 3.2Zm0 3.1a1.1 1.1 0 0 0-1 1.5l1.2 2.1-2.4-.1a1.1 1.1 0 0 0-.7 2l2 1.3-2 1.3a1.1 1.1 0 0 0 .7 2l2.4-.1L11 18.7a1.1 1.1 0 0 0 2 1.1l1.2-2.1 1.2 2.1a1.1 1.1 0 0 0 2-1.1l-1.2-2.1 2.4.1a1.1 1.1 0 0 0 .7-2l-2-1.3 2-1.3a1.1 1.1 0 0 0-.7-2l-2.4.1L17.4 8a1.1 1.1 0 0 0-2-1.1l-1.2 2.1L13 6.9a1.1 1.1 0 0 0-1-.6Z" /></svg>', color: '#ffffff' },
-  'Power Platform': { svg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5 10.5 3v7.5L3 14V6.5Zm8.5-3.5L21 7v7l-9.5-3.5V3ZM3 15l7.5-3.5V21L3 17.5V15Zm8.5-3.5L21 15v2.5L11.5 21v-9.5Z" /></svg>', color: '#742774' },
-  AWS: { svg: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.2 5L9.7 8h2.6l1.5 5L15 8h3l-2.7 8h-2.8l-1.1-3.8L10.3 16H7.5L4 8Zm3.6 9.2c3.6 1.3 7.1 1.3 10.7 0-.3 1.2-1.2 2.5-2.7 3.1-1.7.7-4.2.7-5.9 0-1.1-.5-1.8-1.5-2.1-3.1Z" /></svg>', color: '#ff9900' }
+const stackIcons: Record<string, string> = {
+  'Next.js': nextIcon, React: reactIcon, TypeScript: typescriptIcon, 'Node.js': nodeIcon,
+  PostgreSQL: postgresqlIcon, Supabase: supabaseIcon, Docker: dockerIcon, n8n: n8nIcon,
+  UiPath: uipathIcon,
+  OpenAI: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2a4.2 4.2 0 0 1 6.8 4.9 4.2 4.2 0 0 1 1 7.7 4.2 4.2 0 0 1-6.2 4.6 4.2 4.2 0 0 1-7.4-2.8 4.2 4.2 0 0 1-1.7-7.5A4.2 4.2 0 0 1 12 3.2Zm0 3.1a1.1 1.1 0 0 0-1 1.5l1.2 2.1-2.4-.1a1.1 1.1 0 0 0-.7 2l2 1.3-2 1.3a1.1 1.1 0 0 0 .7 2l2.4-.1L11 18.7a1.1 1.1 0 0 0 2 1.1l1.2-2.1 1.2 2.1a1.1 1.1 0 0 0 2-1.1l-1.2-2.1 2.4.1a1.1 1.1 0 0 0 .7-2l-2-1.3 2-1.3a1.1 1.1 0 0 0-.7-2l-2.4.1L17.4 8a1.1 1.1 0 0 0-2-1.1l-1.2 2.1L13 6.9a1.1 1.1 0 0 0-1-.6Z" /></svg>',
+  'Power Platform': '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5 10.5 3v7.5L3 14V6.5Zm8.5-3.5L21 7v7l-9.5-3.5V3ZM3 15l7.5-3.5V21L3 17.5V15Zm8.5-3.5L21 15v2.5L11.5 21v-9.5Z" /></svg>',
+  AWS: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.2 5L9.7 8h2.6l1.5 5L15 8h3l-2.7 8h-2.8l-1.1-3.8L10.3 16H7.5L4 8Zm3.6 9.2c3.6 1.3 7.1 1.3 10.7 0-.3 1.2-1.2 2.5-2.7 3.1-1.7.7-4.2.7-5.9 0-1.1-.5-1.8-1.5-2.1-3.1Z" /></svg>'
 };
 ---
 
@@ -43,11 +37,6 @@ const stackIcons: Record<string, { svg: string; color: string }> = {
 >
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
   <div class="page-shell" id="top">
-    <div class="browser-chrome" aria-hidden="true">
-      <span class="browser-controls"><i></i><i></i><i></i></span>
-      <span class="browser-address">felex.dev</span>
-      <span class="browser-actions">⌘</span>
-    </div>
     <Header />
 
     <main id="conteudo">
@@ -86,10 +75,6 @@ const stackIcons: Record<string, { svg: string; color: string }> = {
           <div class="visual-note visual-note-two"><i></i> Fluxos em movimento</div>
         </div>
 
-        <div class="hero-index" aria-hidden="true">
-          <span>PORTFOLIO / 26</span>
-          <span>SCROLL ↓</span>
-        </div>
       </section>
 
       <section class="about section" id="sobre" aria-labelledby="about-title">
@@ -149,11 +134,7 @@ const stackIcons: Record<string, { svg: string; color: string }> = {
               <ul class="project-tags" aria-label={`Tecnologias de ${project.title}`}>
                 {project.tags.map((tag) => <li>{tag}</li>)}
               </ul>
-              <div class="project-meta">
-                <span>{project.status}</span>
-                <span>{project.year}</span>
-              </div>
-              <span class="project-link">Ver projeto <span aria-hidden="true">→</span></span>
+              <p class="project-scope">Escopo: {project.scope}</p>
             </article>
           ))}
         </div>
@@ -168,7 +149,7 @@ const stackIcons: Record<string, { svg: string; color: string }> = {
         <ul class="stack-list reveal">
           {stack.map((technology) => (
             <li>
-              <span class="stack-mark" style={`--logo-color: ${stackIcons[technology]!.color}`} set:html={stackIcons[technology]!.svg}></span>
+              <span class="stack-mark" set:html={stackIcons[technology]!}></span>
               {technology}
             </li>
           ))}

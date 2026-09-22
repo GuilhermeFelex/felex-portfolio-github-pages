@@ -5,3 +5,7 @@ dist/
 
 # Evidências locais geradas pelo teste visual automatizado.
 artifacts/responsive/
+
+# Logs locais do servidor Astro usados na revisão no navegador.
+.astro-dev.log
+.astro-dev.err.log

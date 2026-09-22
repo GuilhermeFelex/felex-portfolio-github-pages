@@ -45,34 +45,30 @@ export const projects = [
   {
     number: '01',
     title: 'Dominus OS',
-    description: 'Plataforma SaaS multi-tenant que reúne CRM, ERP, atendimento e inteligência artificial em uma única operação.',
+    description: 'Centraliza cadastro, atendimento e regras de operação para times que usam CRM, ERP e IA no mesmo fluxo.',
     tags: ['SaaS', 'CRM', 'ERP', 'AI'],
-    year: '2026',
-    status: 'Em desenvolvimento'
+    scope: 'CRM · ERP · IA'
   },
   {
     number: '02',
     title: 'Omnichannel Platform',
-    description: 'Ecossistema de integrações para centralizar pedidos, estoque, anúncios e atendimento entre ERP e marketplaces.',
+    description: 'Conecta ERP, marketplaces e canais de atendimento para sincronizar pedidos, estoque e atualizações operacionais.',
     tags: ['Integrações', 'Marketplaces', 'Automação'],
-    year: '2026',
-    status: 'Produto'
+    scope: 'Pedidos · estoque · atendimento'
   },
   {
     number: '03',
     title: 'AI Automation',
-    description: 'Agentes conectados a bases de conhecimento e processos empresariais para executar, analisar e apoiar decisões.',
+    description: 'Orquestra agentes com base de conhecimento, ferramentas e regras de aprovação para tarefas que exigem contexto.',
     tags: ['Agents', 'RAG', 'Workflows'],
-    year: '2026',
-    status: 'Laboratório'
+    scope: 'RAG · agentes · workflows'
   },
   {
     number: '04',
-    title: 'Service & Operations',
-    description: 'Automação de atendimento e rotinas operacionais para reduzir tarefas repetitivas e dar previsibilidade ao time.',
+    title: 'Operações de atendimento',
+    description: 'Organiza triagem, roteamento e acompanhamento de demandas entre mensageria, CRM e rotinas internas.',
     tags: ['Mensageria', 'CRM', 'Automação'],
-    year: '2026',
-    status: 'Em desenvolvimento'
+    scope: 'Atendimento · CRM · operações'
   }
 ];
 

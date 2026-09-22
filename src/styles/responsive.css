@@ -1,11 +1,35 @@
-/* Tablet e menu móvel. */
+/* Tablet: mantém a navegação completa e reorganiza o conteúdo em duas colunas. */
 @media (max-width: 900px) {
   :root { --page: calc(100vw - 32px); }
-  body.nav-open { overflow: hidden; }
   .page-shell { margin-block: 0; border-inline: 0; border-radius: 0; }
-  .browser-chrome { display: none; }
+  /* Em tablet, a foto estreita seria cortada; priorizamos tipografia e leitura. */
+  .hero { min-height: 670px; padding: 34px 0; background-image: linear-gradient(145deg, rgba(13, 44, 59, .34), transparent 58%); }
+  .hero-title { max-width: 640px; font-size: clamp(3rem, 8vw, 4.8rem); }
+  .section, .contact { padding-inline: 0; }
+  .section-title { grid-template-columns: 18% 1fr; }
+  .about-grid, .projects-intro, .contact-bottom { grid-template-columns: 1fr; }
+  .about-grid { gap: 30px; }
+  .about-copy { margin-left: 0; }
+  .expertise-list { grid-template-columns: repeat(2, 1fr); }
+  .expertise-item:nth-child(2) { border-right: 0; }
+  .expertise-item:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+  .expertise-item p, .project-item > p { font-size: 15px; }
+  .project-list { grid-template-columns: repeat(2, 1fr); }
+  .project-item { min-height: 370px; }
+  .stack-list { grid-template-columns: repeat(3, 1fr); }
+  .stack-list li:nth-child(3n) { border-right: 0; }
+  .stack-list li:nth-child(-n + 9) { border-bottom: 1px solid var(--line); }
+  .contact-title { margin: 42px 0; }
+  .site-footer { grid-template-columns: 1fr auto; gap: 20px; min-height: 128px; padding-inline: 0; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-links { justify-content: flex-start; }
+}
+
+/* Menu móvel: somente quando a navegação horizontal deixaria de caber confortavelmente. */
+@media (max-width: 720px) {
+  body.nav-open { overflow: hidden; }
   .site-header { height: 76px; padding-inline: 0; }
-  .menu-button { display: inline-flex; align-items: center; gap: 12px; padding: 10px 0; }
+  .menu-button { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; padding: 10px 0; }
   .menu-icon, .menu-icon::after { display: block; width: 18px; height: 1px; background: currentColor; content: ''; transition: transform .2s ease; }
   .menu-icon::after { transform: translateY(5px); }
   .menu-open .menu-icon { transform: rotate(45deg); }
@@ -13,22 +37,7 @@
   .site-nav { position: fixed; top: 76px; left: 0; flex-direction: column; width: 100%; height: calc(100svh - 76px); padding: 48px 16px; gap: 0; background: var(--bg); visibility: hidden; opacity: 0; transform: translateY(-10px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
   .menu-open .site-nav { visibility: visible; opacity: 1; transform: none; }
   .site-nav a { padding: 22px 0; border-bottom: 1px solid var(--line); font: 500 clamp(1.6rem, 8vw, 2.6rem) var(--sans); letter-spacing: -.04em; }
-  .hero { min-height: calc(100svh - 76px); padding: 34px 0; background-position: 66% center; }
-  .hero-title { max-width: 690px; font-size: clamp(3rem, 11vw, 6rem); }
-  .section, .contact { padding-inline: 0; }
-  .section-title { grid-template-columns: 18% 1fr; }
-  .about-grid, .projects-intro, .contact-bottom { grid-template-columns: 1fr; }
-  .about-copy { margin-left: 18%; }
-  .expertise-list { grid-template-columns: repeat(2, 1fr); }
-  .expertise-item:nth-child(2) { border-right: 0; }
-  .expertise-item:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
-  .project-list { grid-template-columns: 1fr; }
-  .project-item { min-height: 350px; }
-  .stack-list { grid-template-columns: repeat(3, 1fr); }
-  .stack-list li:nth-child(3n) { border-right: 0; }
-  .stack-list li:nth-child(-n + 9) { border-bottom: 1px solid var(--line); }
-  .contact-title { margin: 42px 0; }
-  .site-footer { padding-inline: 0; }
+  .hero { min-height: calc(100svh - 76px); }
 }
 
 /* Celulares: prioriza leitura e remove a foto quando ela deixaria o texto menos claro. */
@@ -49,6 +58,7 @@
   .expertise-item, .expertise-item:nth-child(2) { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .expertise-item:last-child { border-bottom: 0; }
   .projects-intro h2, .about-lead, .stack-title { font-size: clamp(2rem, 10vw, 3rem); }
+  .project-list { grid-template-columns: 1fr; }
   .project-item { min-height: 0; padding: 24px; }
   .project-heading { min-height: 0; }
   .project-heading h3 { margin: 20px 0; }

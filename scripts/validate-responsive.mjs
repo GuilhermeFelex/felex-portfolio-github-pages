@@ -45,9 +45,10 @@ function startServer() {
 }
 
 function expectedLayout(width) {
-  return width <= 900
-    ? { menuVisible: true, projectColumns: 1 }
-    : { menuVisible: false, projectColumns: 4 };
+  if (width <= 560) return { menuVisible: true, projectColumns: 1 };
+  if (width <= 720) return { menuVisible: true, projectColumns: 2 };
+  if (width <= 900) return { menuVisible: false, projectColumns: 2 };
+  return { menuVisible: false, projectColumns: 4 };
 }
 
 let server;
