@@ -14,6 +14,7 @@
 .site-footer { display: grid; grid-template-columns: 1.4fr 1fr 1fr; align-items: center; min-height: 100px; padding-inline: 42px; border-top: 1px solid var(--line); color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
 .footer-brand { display: flex; align-items: center; gap: 18px; }
 .footer-brand strong { color: var(--text); letter-spacing: .15em; }
+.footer-brand .footer-brand-accent { color: var(--accent); font-size: inherit; text-transform: inherit; }
 .footer-brand span { font-size: 10px; text-transform: none; }
 .footer-links { display: flex; justify-content: center; gap: 24px; }
 .site-footer > a { justify-self: end; }
