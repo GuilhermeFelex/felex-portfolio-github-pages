@@ -24,23 +24,77 @@ import { site } from '../data/site';
 <script>
   const header = document.querySelector<HTMLElement>('[data-header]');
   const button = document.querySelector<HTMLButtonElement>('.menu-button');
+  const navigation = document.querySelector<HTMLElement>('.site-nav');
+  const brand = document.querySelector<HTMLElement>('.brand');
   const links = document.querySelectorAll<HTMLAnchorElement>('.site-nav a');
+  const mobileMenu = window.matchMedia('(max-width: 720px)');
+  const inactiveContent = document.querySelectorAll<HTMLElement>('main, .site-footer');
 
-  const closeMenu = () => {
-    button?.setAttribute('aria-expanded', 'false');
-    header?.classList.remove('menu-open');
-    document.body.classList.remove('nav-open');
+  /**
+   * Sincroniza os atributos visuais e de acessibilidade do menu móvel.
+   * Em desktop, o menu é sempre visível e não deve receber `aria-hidden`.
+   */
+  const setMenuState = (isOpen: boolean, restoreButtonFocus = false) => {
+    if (!mobileMenu.matches) {
+      button?.setAttribute('aria-expanded', 'false');
+      header?.classList.remove('menu-open');
+      document.body.classList.remove('nav-open');
+      navigation?.removeAttribute('aria-hidden');
+      brand?.removeAttribute('inert');
+      inactiveContent.forEach((element) => element.removeAttribute('inert'));
+      return;
+    }
+
+    button?.setAttribute('aria-expanded', String(isOpen));
+    header?.classList.toggle('menu-open', isOpen);
+    document.body.classList.toggle('nav-open', isOpen);
+    navigation?.setAttribute('aria-hidden', String(!isOpen));
+
+    // `inert` impede que Tab alcance o conteúdo que está visualmente atrás do menu aberto.
+    brand?.toggleAttribute('inert', isOpen);
+    inactiveContent.forEach((element) => element.toggleAttribute('inert', isOpen));
+
+    if (isOpen) {
+      requestAnimationFrame(() => links[0]?.focus());
+    } else if (restoreButtonFocus) {
+      button?.focus();
+    }
   };
 
   button?.addEventListener('click', () => {
     const isOpen = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', String(!isOpen));
-    header?.classList.toggle('menu-open', !isOpen);
-    document.body.classList.toggle('nav-open', !isOpen);
+    setMenuState(!isOpen);
   });
 
-  links.forEach((link) => link.addEventListener('click', closeMenu));
+  links.forEach((link) => link.addEventListener('click', () => setMenuState(false)));
   window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeMenu();
+    const isOpen = mobileMenu.matches && button?.getAttribute('aria-expanded') === 'true';
+    if (!isOpen) return;
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      setMenuState(false, true);
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    // O botão e os links formam o único ciclo de foco enquanto o menu estiver aberto.
+    const focusableElements = [button, ...links].filter(Boolean) as HTMLElement[];
+    const first = focusableElements[0];
+    const last = focusableElements.at(-1);
+    if (!first || !last) return;
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   });
+
+  // Ao sair do breakpoint móvel, remove o estado acessível usado pelo menu sobreposto.
+  mobileMenu.addEventListener('change', () => setMenuState(false));
+  setMenuState(false);
 </script>

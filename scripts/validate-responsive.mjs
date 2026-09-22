@@ -121,13 +121,52 @@ try {
     });
 
     const expected = expectedLayout(width);
+    let menuAccessibility = { passed: true };
+
+    // Em celular, valida o ciclo de foco: Tab não pode alcançar o conteúdo atrás do menu.
+    if (expected.menuVisible) {
+      await page.locator('.menu-button').click();
+      await page.locator('.site-nav a').first().waitFor({ state: 'visible' });
+
+      const openedMenu = await page.evaluate(() => ({
+        expanded: document.querySelector('.menu-button')?.getAttribute('aria-expanded'),
+        navigationHidden: document.querySelector('.site-nav')?.getAttribute('aria-hidden'),
+        mainIsInert: document.querySelector('main')?.hasAttribute('inert')
+      }));
+
+      // A partir do último link, Tab deve voltar ao botão do menu, não ao conteúdo da página.
+      await page.locator('.site-nav a').last().focus();
+      await page.keyboard.press('Tab');
+      const focusLoopsInsideMenu = await page.evaluate(
+        () => document.activeElement?.classList.contains('menu-button')
+      );
+
+      await page.keyboard.press('Escape');
+      const closedMenu = await page.evaluate(() => ({
+        expanded: document.querySelector('.menu-button')?.getAttribute('aria-expanded'),
+        mainIsInert: document.querySelector('main')?.hasAttribute('inert'),
+        buttonHasFocus: document.activeElement?.classList.contains('menu-button')
+      }));
+
+      menuAccessibility = {
+        passed: openedMenu.expanded === 'true'
+          && openedMenu.navigationHidden === 'false'
+          && openedMenu.mainIsInert
+          && focusLoopsInsideMenu
+          && closedMenu.expanded === 'false'
+          && !closedMenu.mainIsInert
+          && closedMenu.buttonHasFocus
+      };
+    }
+
     const checks = {
       viewportMatches: metrics.viewport === width,
       noHorizontalOverflow: !metrics.horizontalOverflow,
       menuMatchesBreakpoint: metrics.menuVisible === expected.menuVisible,
-      projectsMatchBreakpoint: metrics.projectColumns === expected.projectColumns
+      projectsMatchBreakpoint: metrics.projectColumns === expected.projectColumns,
+      menuAccessible: menuAccessibility.passed
     };
-    const result = { width, height, ...metrics, expected, checks };
+    const result = { width, height, ...metrics, expected, menuAccessibility, checks };
     results.push(result);
 
     await page.screenshot({ path: path.join(outputDir, `portfolio-${width}.png`), fullPage: true });

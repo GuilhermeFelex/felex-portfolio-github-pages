@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { site } from '../data/site';
 
 interface Props {
   title: string;
@@ -11,6 +12,23 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const basePath = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+// A imagem usa URL absoluta porque LinkedIn, WhatsApp e outros crawlers não resolvem caminhos relativos.
+const socialImage = new URL(`${basePath}images/og-felex.png`, Astro.site);
+// Dados estruturados tornam o perfil compreensível para mecanismos de busca sem aparecer na interface.
+const profileSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Guilherme Felex',
+  jobTitle: site.role,
+  url: canonical.href,
+  email: site.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'São Paulo',
+    addressCountry: 'BR'
+  },
+  sameAs: Object.values(site.social).filter(Boolean)
+});
 ---
 
 <!doctype html>
@@ -23,6 +41,23 @@ const basePath = import.meta.env.BASE_URL.endsWith('/')
     <meta name="color-scheme" content="dark" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href={`${basePath}favicon.svg`} type="image/svg+xml" />
+    <!-- Metadados usados para criar uma prévia consistente ao compartilhar o portfólio. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Felex" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Felex — Integração, Automação e IA" />
+    <meta property="og:image:width" content="1730" />
+    <meta property="og:image:height" content="909" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <meta name="twitter:image:alt" content="Felex — Integração, Automação e IA" />
+    <script type="application/ld+json" set:html={profileSchema}></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

@@ -1,0 +1,5 @@
+# Permite que todos os mecanismos de busca rastreiem o portfólio público.
+User-agent: *
+Allow: /
+
+Sitemap: https://guilhermefelex.github.io/sitemap.xml

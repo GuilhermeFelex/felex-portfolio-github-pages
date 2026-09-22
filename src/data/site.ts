@@ -5,7 +5,7 @@ export const site = {
   email: 'guilherme.felex@hotmail.com',
   social: {
     github: 'https://github.com/GuilhermeFelex',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/guilhermefelex/',
     instagram: 'https://www.instagram.com/felextech'
   }
 };
