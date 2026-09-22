@@ -27,6 +27,7 @@ Abra `http://localhost:4321` no navegador.
 | `npm run dev` | Inicia o ambiente de desenvolvimento com atualização automática. |
 | `npm run build` | Valida TypeScript/Astro e gera a versão de produção em `dist/`. |
 | `npm run preview` | Abre localmente a versão gerada pelo build. |
+| `npm run validate:responsive` | Testa os breakpoints no Chrome e salva screenshots locais em `artifacts/responsive/`. |
 
 ## Estrutura do projeto
 
@@ -42,9 +43,22 @@ src/
     ├── layout.css    # Cabeçalho, navegação, contêiner e rodapé
     ├── sections.css  # Hero, projetos, especialidades, stack e contato
     └── responsive.css # Regras para tablet, celular e menos movimento
+
+scripts/
+└── validate-responsive.mjs # Validação automática dos breakpoints no navegador
 ```
 
 O arquivo `src/styles/global.css` é somente o ponto de entrada que importa os módulos na ordem correta.
+
+## Validação responsiva
+
+Execute a validação visual automática com:
+
+```bash
+npm run validate:responsive
+```
+
+O teste inicia o Astro, abre o site no Chrome com Playwright e verifica as larguras **320px, 375px, 768px, 1024px e 1440px**. Ele reprova scroll horizontal e mudanças inesperadas no menu ou na grade de projetos. As cinco screenshots e o relatório JSON ficam em `artifacts/responsive/`, diretório que já está ignorado pelo Git.
 
 ## Personalizar o conteúdo
 

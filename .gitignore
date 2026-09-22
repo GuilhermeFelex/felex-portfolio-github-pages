@@ -3,3 +3,5 @@ dist/
 .astro/
 .DS_Store
 
+# Evidências locais geradas pelo teste visual automatizado.
+artifacts/responsive/

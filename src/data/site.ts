@@ -2,9 +2,9 @@ export const site = {
   name: 'Felex',
   role: 'Desenvolvedor de Integração, Automação e Agentes de IA',
   location: 'São Paulo, Brasil',
-  email: '',
+  email: 'guilherme.felex@hotmail.com',
   social: {
-    github: '',
+    github: 'https://github.com/GuilhermeFelex',
     linkedin: '',
     instagram: 'https://www.instagram.com/felextech'
   }
@@ -13,24 +13,28 @@ export const site = {
 export const expertise = [
   {
     number: '01',
+    icon: 'link',
     title: 'Integrações',
     description: 'Sistemas que conversam entre si com segurança, rastreabilidade e contexto de negócio.',
     tags: ['APIs', 'Webhooks', 'ERP', 'CRM', 'Marketplaces']
   },
   {
     number: '02',
+    icon: 'settings',
     title: 'Automação',
     description: 'Processos manuais transformados em fluxos confiáveis, mensuráveis e escaláveis.',
     tags: ['RPA', 'n8n', 'Workflows', 'Workers']
   },
   {
     number: '03',
+    icon: 'brain',
     title: 'Agentes de IA',
     description: 'IA aplicada ao trabalho real, conectada a dados, ferramentas e regras da operação.',
     tags: ['LLMs', 'RAG', 'Tools', 'OpenAI']
   },
   {
     number: '04',
+    icon: 'cube',
     title: 'Produtos digitais',
     description: 'Aplicações empresariais modulares, preparadas para crescer sem perder clareza.',
     tags: ['Next.js', 'React', 'TypeScript', 'PostgreSQL']
@@ -61,6 +65,14 @@ export const projects = [
     tags: ['Agents', 'RAG', 'Workflows'],
     year: '2026',
     status: 'Laboratório'
+  },
+  {
+    number: '04',
+    title: 'Service & Operations',
+    description: 'Automação de atendimento e rotinas operacionais para reduzir tarefas repetitivas e dar previsibilidade ao time.',
+    tags: ['Mensageria', 'CRM', 'Automação'],
+    year: '2026',
+    status: 'Em desenvolvimento'
   }
 ];
 
@@ -73,5 +85,8 @@ export const stack = [
   'Supabase',
   'Docker',
   'n8n',
-  'OpenAI'
+  'OpenAI',
+  'UiPath',
+  'Power Platform',
+  'AWS'
 ];

@@ -1,14 +1,21 @@
 /* Estrutura compartilhada: limite da página, cabeçalho e rodapé. */
-.page-shell { width: var(--page); margin: 0 auto; }
-.site-header { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; height: 88px; border-bottom: 1px solid rgba(27, 32, 48, .12); }
-.brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -.03em; }
-.brand-mark { display: grid; width: 36px; aspect-ratio: 1; place-items: center; border-radius: 12px; background: var(--ink); color: white; font-size: 15px; }
-.brand-mark span { color: #a9f2d2; }
+.page-shell { width: var(--page); margin: 16px auto; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 24px 70px rgba(0, 0, 0, .24); }
+.browser-chrome { display: grid; grid-template-columns: 1fr minmax(240px, 44%) 1fr; align-items: center; height: 38px; padding-inline: 14px; border-bottom: 1px solid var(--line); background: #0e171d; }
+.browser-controls { display: flex; gap: 7px; }
+.browser-controls i { width: 9px; height: 9px; border-radius: 50%; background: #f17b6d; }
+.browser-controls i:nth-child(2) { background: #eac15b; }
+.browser-controls i:nth-child(3) { background: #58bc86; }
+.browser-address { padding: 4px 12px; border: 1px solid rgba(168, 197, 211, .13); border-radius: 5px; background: #17242c; color: var(--muted); font: 10px var(--mono); text-align: center; }
+.browser-actions { justify-self: end; color: var(--muted); font: 12px var(--mono); }
+.site-header { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; height: 88px; padding-inline: 42px; border-bottom: 1px solid var(--line); }
+.brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .2em; }
+.brand-mark { display: grid; width: 34px; aspect-ratio: 1; place-items: center; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-raised); color: var(--text); font-size: 14px; }
+.brand-mark span { color: var(--accent); }
 .site-nav { display: flex; gap: clamp(22px, 2.5vw, 42px); font: 500 12px var(--mono); }
 .site-nav a, .footer-links a, .site-footer > a { color: var(--muted); transition: color .2s ease; }
-.site-nav a:hover, .site-nav a:focus-visible, .footer-links a:hover, .footer-links a:focus-visible, .site-footer > a:hover, .site-footer > a:focus-visible { color: var(--text); }
+.site-nav a:hover, .site-nav a:focus-visible, .footer-links a:hover, .footer-links a:focus-visible, .site-footer > a:hover, .site-footer > a:focus-visible { color: var(--accent); }
 /* O botão é revelado no módulo responsive.css. */
 .menu-button { display: none; color: var(--text); background: transparent; border: 0; font: 13px var(--mono); }
-.site-footer { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; min-height: 100px; border-top: 1px solid rgba(27, 32, 48, .12); color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
+.site-footer { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; min-height: 100px; padding-inline: 42px; border-top: 1px solid var(--line); color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
 .footer-links { display: flex; justify-content: center; gap: 24px; }
 .site-footer > a { justify-self: end; }

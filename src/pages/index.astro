@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
+import FeatureIcon from '../components/FeatureIcon.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import { expertise, projects, site, stack } from '../data/site';
 
@@ -9,6 +10,13 @@ const socialLinks = [
   { label: 'LinkedIn', href: site.social.linkedin },
   { label: 'Instagram', href: site.social.instagram }
 ].filter((item) => item.href);
+
+// Siglas curtas mantêm a stack reconhecível sem carregar bibliotecas de ícones.
+const stackMarks: Record<string, string> = {
+  'Next.js': 'N', React: 'R', TypeScript: 'TS', 'Node.js': 'N', PostgreSQL: 'PG',
+  Supabase: 'S', Docker: 'D', n8n: 'n8n', OpenAI: 'AI', UiPath: 'Ui',
+  'Power Platform': 'PP', AWS: 'AWS'
+};
 ---
 
 <BaseLayout
@@ -17,6 +25,11 @@ const socialLinks = [
 >
   <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
   <div class="page-shell" id="top">
+    <div class="browser-chrome" aria-hidden="true">
+      <span class="browser-controls"><i></i><i></i><i></i></span>
+      <span class="browser-address">felex.dev</span>
+      <span class="browser-actions">⌘</span>
+    </div>
     <Header />
 
     <main id="conteudo">
@@ -38,10 +51,13 @@ const socialLinks = [
             Transformo processos complexos em operações digitais claras, conectando software,
             automação e inteligência artificial.
           </p>
-          <a class="text-link" href="#projetos">
-            Ver projetos
-            <span aria-hidden="true">↘</span>
-          </a>
+          <div class="hero-actions">
+            <a class="text-link" href="#projetos">
+              Ver projetos
+              <span aria-hidden="true">↘</span>
+            </a>
+            <a class="hero-contact" href="#contato">Contato <span aria-hidden="true">→</span></a>
+          </div>
         </div>
 
         <div class="hero-visual reveal" aria-hidden="true">
@@ -84,7 +100,7 @@ const socialLinks = [
         <div class="expertise-list">
           {expertise.map((item) => (
             <article class="expertise-item reveal">
-              <span class="item-number">{item.number}</span>
+              <FeatureIcon name={item.icon} />
               <div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
@@ -119,6 +135,7 @@ const socialLinks = [
                 <span>{project.status}</span>
                 <span>{project.year}</span>
               </div>
+              <span class="project-link">Ver projeto <span aria-hidden="true">→</span></span>
             </article>
           ))}
         </div>
@@ -131,9 +148,9 @@ const socialLinks = [
           <span>Critério permanece.</span>
         </h2>
         <ul class="stack-list reveal">
-          {stack.map((technology, index) => (
+          {stack.map((technology) => (
             <li>
-              <span>{String(index + 1).padStart(2, '0')}</span>
+              <span class="stack-mark">{stackMarks[technology]}</span>
               {technology}
             </li>
           ))}
@@ -150,7 +167,7 @@ const socialLinks = [
         </h2>
         <div class="contact-bottom reveal">
           <p>Vamos conversar sobre o problema antes de falar sobre a ferramenta.</p>
-          <a class="contact-link" href={site.social.instagram} target="_blank" rel="noreferrer">
+          <a class="contact-link" href={`mailto:${site.email}`}>
             Iniciar conversa
             <span aria-hidden="true">↗</span>
           </a>
