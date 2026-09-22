@@ -14,20 +14,36 @@ const basePath = import.meta.env.BASE_URL.endsWith('/')
   : `${import.meta.env.BASE_URL}/`;
 // A imagem usa URL absoluta porque LinkedIn, WhatsApp e outros crawlers não resolvem caminhos relativos.
 const socialImage = new URL(`${basePath}images/og-felex.png`, Astro.site);
-// Dados estruturados tornam o perfil compreensível para mecanismos de busca sem aparecer na interface.
+// Dados estruturados conectam a pessoa, o nome curto "Felex" e a marca FelexTech nas buscas.
 const profileSchema = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Guilherme Felex',
-  jobTitle: site.role,
-  url: canonical.href,
-  email: site.email,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'São Paulo',
-    addressCountry: 'BR'
-  },
-  sameAs: Object.values(site.social).filter(Boolean)
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${canonical.origin}/#guilherme-felex`,
+      name: 'Guilherme Felex',
+      alternateName: 'Felex',
+      jobTitle: site.role,
+      url: canonical.href,
+      email: site.email,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'São Paulo',
+        addressCountry: 'BR'
+      },
+      sameAs: [site.social.github, site.social.linkedin].filter(Boolean),
+      worksFor: { '@id': `${canonical.origin}/#felextech` }
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${canonical.origin}/#felextech`,
+      name: 'FelexTech',
+      alternateName: 'Felex',
+      url: canonical.href,
+      founder: { '@id': `${canonical.origin}/#guilherme-felex` },
+      sameAs: [site.social.instagram].filter(Boolean)
+    }
+  ]
 });
 ---
 
@@ -48,19 +64,19 @@ const profileSchema = JSON.stringify({
     <!-- Metadados usados para criar uma prévia consistente ao compartilhar o portfólio. -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content="Felex" />
+    <meta property="og:site_name" content="FelexTech" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
-    <meta property="og:image:alt" content="Felex — Integração, Automação e IA" />
+    <meta property="og:image:alt" content="FelexTech — Integração, Automação e IA" />
     <meta property="og:image:width" content="1730" />
     <meta property="og:image:height" content="909" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
-    <meta name="twitter:image:alt" content="Felex — Integração, Automação e IA" />
+    <meta name="twitter:image:alt" content="FelexTech — Integração, Automação e IA" />
     <script type="application/ld+json" set:html={profileSchema}></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

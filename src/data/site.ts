@@ -23,14 +23,14 @@ export const expertise = [
     icon: 'settings',
     title: 'Automação',
     description: 'Processos manuais transformados em fluxos confiáveis, mensuráveis e escaláveis.',
-    tags: ['RPA', 'n8n', 'Workflows', 'Workers']
+    tags: ['RPA', 'n8n', 'Fluxos', 'Serviços']
   },
   {
     number: '03',
     icon: 'brain',
     title: 'Agentes de IA',
     description: 'IA aplicada ao trabalho real, conectada a dados, ferramentas e regras da operação.',
-    tags: ['LLMs', 'RAG', 'Tools', 'OpenAI']
+    tags: ['LLMs', 'RAG', 'Ferramentas', 'OpenAI']
   },
   {
     number: '04',
@@ -46,22 +46,22 @@ export const projects = [
     number: '01',
     title: 'Dominus OS',
     description: 'Centraliza cadastro, atendimento e regras de operação para times que usam CRM, ERP e IA no mesmo fluxo.',
-    tags: ['SaaS', 'CRM', 'ERP', 'AI'],
+    tags: ['SaaS', 'CRM', 'ERP', 'IA'],
     scope: 'CRM · ERP · IA'
   },
   {
     number: '02',
-    title: 'Omnichannel Platform',
+    title: 'Plataforma de atendimento e canais',
     description: 'Conecta ERP, marketplaces e canais de atendimento para sincronizar pedidos, estoque e atualizações operacionais.',
     tags: ['Integrações', 'Marketplaces', 'Automação'],
     scope: 'Pedidos · estoque · atendimento'
   },
   {
     number: '03',
-    title: 'AI Automation',
+    title: 'Automação com IA',
     description: 'Orquestra agentes com base de conhecimento, ferramentas e regras de aprovação para tarefas que exigem contexto.',
-    tags: ['Agents', 'RAG', 'Workflows'],
-    scope: 'RAG · agentes · workflows'
+    tags: ['Agentes', 'RAG', 'Fluxos'],
+    scope: 'RAG · agentes · fluxos'
   },
   {
     number: '04',
