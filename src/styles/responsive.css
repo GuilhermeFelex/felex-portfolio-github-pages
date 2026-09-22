@@ -90,3 +90,12 @@
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* A marca mantém proporções legíveis na navegação de telas pequenas. */
+@media (max-width: 720px) {
+  .brand-logo { width: 38px; height: 36px; }
+  .brand-wordmark { font-size: 21px; }
+}
+@media (max-width: 350px) {
+  .brand-wordmark { display: none; }
+}
