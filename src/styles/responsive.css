@@ -1,0 +1,48 @@
+/* Tablet e menu móvel. */
+@media (max-width: 900px) {
+  :root { --page: calc(100vw - 32px); }
+  body.nav-open { overflow: hidden; }
+  .site-header { height: 76px; }
+  .menu-button { display: inline-flex; align-items: center; gap: 12px; padding: 10px 0; }
+  .menu-icon, .menu-icon::after { display: block; width: 18px; height: 1px; background: currentColor; content: ''; transition: transform .2s ease; }
+  .menu-icon::after { transform: translateY(5px); }
+  .menu-open .menu-icon { transform: rotate(45deg); }
+  .menu-open .menu-icon::after { transform: rotate(-90deg); }
+  .site-nav { position: fixed; top: 76px; left: 0; flex-direction: column; width: 100%; height: calc(100svh - 76px); padding: 48px 16px; gap: 0; background: var(--bg); visibility: hidden; opacity: 0; transform: translateY(-10px); transition: opacity .2s ease, transform .2s ease, visibility .2s; }
+  .menu-open .site-nav { visibility: visible; opacity: 1; transform: none; }
+  .site-nav a { padding: 22px 0; border-bottom: 1px solid var(--line); font: 500 clamp(1.6rem, 8vw, 2.6rem) var(--sans); letter-spacing: -.04em; }
+  .hero { min-height: calc(100svh - 76px); padding-top: 34px; }
+  .hero-title { font-size: clamp(3rem, 14vw, 6.5rem); }
+  .hero-visual { top: 18%; right: 2%; opacity: .72; }
+  .hero-bottom { margin-left: 0; }
+  .section-title { grid-template-columns: 18% 1fr; }
+  .about-grid, .projects-intro, .stack, .contact-bottom { grid-template-columns: 1fr; }
+  .about-copy { margin-left: 18%; }
+  .expertise-item { grid-template-columns: 12% 1fr; }
+  .expertise-item ul { grid-column: 2; }
+  .project-list { grid-template-columns: 1fr; }
+  .project-item { min-height: 430px; padding: 34px 28px; }
+  .stack .section-title { grid-column: auto; }
+}
+
+/* Celulares: esconder decoração secundária e manter o conteúdo legível. */
+@media (max-width: 560px) {
+  .brand-name, .hero-location, .visual-note { display: none; }
+  .hero-title { letter-spacing: -.06em; }
+  .hero-visual { top: 23%; right: -4%; width: 145px; opacity: .48; }
+  .hero-bottom { grid-template-columns: 1fr; gap: 24px; }
+  .text-link { justify-content: space-between; }
+  .about-copy { margin-left: 0; }
+  .expertise-item { grid-template-columns: 1fr; }
+  .expertise-item ul { grid-column: auto; }
+  .contact { margin-right: -16px; margin-left: -16px; border-radius: 20px 20px 0 0; }
+  .contact-title br { display: none; }
+  .site-footer { grid-template-columns: 1fr auto; gap: 24px; }
+  .footer-links { grid-row: 1; grid-column: 1 / -1; justify-content: flex-start; }
+}
+
+/* Respeita a preferência do sistema por menos movimento. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

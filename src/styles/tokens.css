@@ -1,0 +1,15 @@
+/* Variáveis globais. Altere a identidade visual neste arquivo. */
+:root {
+  --bg: #f5f5f1;
+  --surface: #fff;
+  --ink: #1b2030;
+  --text: #1b2030;
+  --muted: #626a7a;
+  --line: #dfe2e7;
+  --accent: #5d5cf6;
+  --mint: #d9f4e9;
+  --coral: #ff8163;
+  --page: min(1360px, calc(100vw - 64px));
+  --sans: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'DM Mono', 'SFMono-Regular', Consolas, monospace;
+}
