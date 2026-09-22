@@ -49,7 +49,11 @@
   .expertise-item, .expertise-item:nth-child(2) { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .expertise-item:last-child { border-bottom: 0; }
   .projects-intro h2, .about-lead, .stack-title { font-size: clamp(2rem, 10vw, 3rem); }
-  .project-item { min-height: 330px; padding: 24px; }
+  .project-item { min-height: 0; padding: 24px; }
+  .project-heading { min-height: 0; }
+  .project-heading h3 { margin: 20px 0; }
+  .project-item > p { margin-bottom: 20px; font-size: 14px; }
+  .project-tags { margin-bottom: 22px; }
   .stack-list { grid-template-columns: repeat(2, 1fr); }
   .stack-list li, .stack-list li:nth-child(3n) { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .stack-list li:nth-child(even) { border-right: 0; }
@@ -57,8 +61,11 @@
   .contact { min-height: 420px; padding-block: 58px; }
   .contact-title { font-size: clamp(2.5rem, 13vw, 4rem); }
   .contact-title br { display: none; }
-  .site-footer { grid-template-columns: 1fr auto; gap: 24px; min-height: 130px; }
-  .footer-links { grid-row: 1; grid-column: 1 / -1; justify-content: flex-start; }
+  .contact-bottom p { font-size: 16px; }
+  .site-footer { grid-template-columns: 1fr; gap: 16px; min-height: 150px; }
+  .footer-links { grid-row: 2; grid-column: auto; justify-content: flex-start; }
+  .site-footer > a { grid-row: 3; justify-self: start; }
+  .footer-brand { flex-wrap: wrap; gap: 8px 14px; }
 }
 
 /* Respeita a preferência do sistema por menos movimento. */

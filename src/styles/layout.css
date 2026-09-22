@@ -16,6 +16,9 @@
 .site-nav a:hover, .site-nav a:focus-visible, .footer-links a:hover, .footer-links a:focus-visible, .site-footer > a:hover, .site-footer > a:focus-visible { color: var(--accent); }
 /* O botão é revelado no módulo responsive.css. */
 .menu-button { display: none; color: var(--text); background: transparent; border: 0; font: 13px var(--mono); }
-.site-footer { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; min-height: 100px; padding-inline: 42px; border-top: 1px solid var(--line); color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
+.site-footer { display: grid; grid-template-columns: 1.4fr 1fr 1fr; align-items: center; min-height: 100px; padding-inline: 42px; border-top: 1px solid var(--line); color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
+.footer-brand { display: flex; align-items: center; gap: 18px; }
+.footer-brand strong { color: var(--text); letter-spacing: .25em; }
+.footer-brand span { font-size: 10px; text-transform: none; }
 .footer-links { display: flex; justify-content: center; gap: 24px; }
 .site-footer > a { justify-self: end; }
