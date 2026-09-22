@@ -1,0 +1,46 @@
+---
+import { site } from '../data/site';
+---
+
+<header class="site-header" data-header>
+  <a class="brand" href="#top" aria-label="Felex — voltar ao início">
+    <span class="brand-mark">F<span>/</span></span>
+    <span class="brand-name">{site.name}</span>
+  </a>
+
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation">
+    <span>Menu</span>
+    <span class="menu-icon" aria-hidden="true"></span>
+  </button>
+
+  <nav id="site-navigation" class="site-nav" aria-label="Navegação principal">
+    <a href="#sobre">Sobre</a>
+    <a href="#especialidades">Especialidades</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const button = document.querySelector<HTMLButtonElement>('.menu-button');
+  const links = document.querySelectorAll<HTMLAnchorElement>('.site-nav a');
+
+  const closeMenu = () => {
+    button?.setAttribute('aria-expanded', 'false');
+    header?.classList.remove('menu-open');
+    document.body.classList.remove('nav-open');
+  };
+
+  button?.addEventListener('click', () => {
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!isOpen));
+    header?.classList.toggle('menu-open', !isOpen);
+    document.body.classList.toggle('nav-open', !isOpen);
+  });
+
+  links.forEach((link) => link.addEventListener('click', closeMenu));
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+</script>
