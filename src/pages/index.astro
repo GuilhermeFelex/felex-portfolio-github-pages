@@ -117,10 +117,10 @@ const stackIcons: Record<string, string> = {
       </section>
 
       <section class="projects section" id="projetos" aria-labelledby="projects-title">
-        <SectionTitle number="03" label="Projetos selecionados" />
+        <SectionTitle number="03" label="Produtos em desenvolvimento" />
         <div class="projects-intro reveal">
-          <h2 id="projects-title">Produtos construídos em torno de problemas reais.</h2>
-          <p>Uma seleção de plataformas, integrações e experimentos em desenvolvimento.</p>
+          <h2 id="projects-title">Soluções em desenvolvimento para operações reais.</h2>
+          <p>Quatro frentes que combinam CRM, ERP, automação e IA aplicada à operação.</p>
         </div>
 
         <div class="project-list">
@@ -134,7 +134,8 @@ const stackIcons: Record<string, string> = {
               <ul class="project-tags" aria-label={`Tecnologias de ${project.title}`}>
                 {project.tags.map((tag) => <li>{tag}</li>)}
               </ul>
-              <p class="project-scope">Escopo: {project.scope}</p>
+              <!-- Sem métricas ou links públicos, o escopo deixa claro o que cada produto cobre. -->
+              <p class="project-scope">Foco operacional: {project.scope}</p>
             </article>
           ))}
         </div>

@@ -19,10 +19,10 @@
 .hero-visual { display: none; }
 
 /* Componentes compartilhados entre as seções de conteúdo. */
-.section { padding: clamp(72px, 8vw, 112px) 42px; border-bottom: 1px solid var(--line); }
+.section { padding: clamp(64px, 7vw, 96px) 42px; border-bottom: 1px solid var(--line); }
 .about.section { padding-block: clamp(56px, 6vw, 80px); }
 .about .section-title { margin-bottom: clamp(34px, 4vw, 48px); }
-.section-title { display: grid; grid-template-columns: 25% 1fr; margin-bottom: clamp(42px, 5vw, 72px); color: var(--muted); font: 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.section-title { display: grid; grid-template-columns: 25% 1fr; margin-bottom: clamp(36px, 4vw, 56px); color: var(--muted); font: 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
 .section-title span, .item-number { color: var(--accent); }
 .section-title h2 { margin: 0; color: inherit; font: inherit; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 9vw, 150px); }
@@ -44,7 +44,7 @@
 .expertise-item li, .project-tags li { padding: 6px 9px; border: 1px solid var(--line); background: rgba(16, 29, 36, .72); color: #c0cdd5; font: 11px var(--mono); }
 
 /* Projetos: superfícies escuras com o conteúdo e estado claramente separados. */
-.projects-intro { display: grid; grid-template-columns: 2fr 1fr; align-items: end; gap: 12%; margin-bottom: clamp(42px, 5vw, 72px); }
+.projects-intro { display: grid; grid-template-columns: 2fr 1fr; align-items: end; gap: 12%; margin-bottom: clamp(36px, 4vw, 56px); }
 .projects-intro p { max-width: 420px; margin: 0; color: var(--muted); }
 .project-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .project-item { display: flex; flex-direction: column; min-height: 390px; padding: 24px; border: 1px solid var(--line); background: var(--surface); transition: transform .3s ease, border-color .3s ease, background .3s ease; }
@@ -60,7 +60,7 @@
 /* Stack: uma sequência horizontal de ferramentas em telas amplas. */
 .stack { display: grid; grid-template-columns: 1fr; }
 .stack .section-title { grid-column: 1; }
-.stack-title { max-width: 720px; margin-bottom: 54px; }
+.stack-title { max-width: 720px; margin-bottom: 42px; }
 .stack-list { display: grid; grid-template-columns: repeat(6, 1fr); border-block: 1px solid var(--line); }
 .stack-list li { display: grid; gap: 10px; min-height: 118px; align-content: center; padding: 14px; border-right: 1px solid var(--line); color: #cbd7de; font-size: 14px; }
 .stack-list li:nth-child(6n) { border-right: 0; }

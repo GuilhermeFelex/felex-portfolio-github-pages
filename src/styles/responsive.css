@@ -25,6 +25,13 @@
   .footer-links { justify-content: flex-start; }
 }
 
+/* Desktops baixos: mantém a ação principal no primeiro viewport sem alterar o ritmo em telas altas. */
+@media (min-width: 901px) and (max-height: 760px) {
+  .hero { padding-bottom: 26px; }
+  .hero-title { margin-block: 18px; }
+  .hero-bottom { padding-bottom: 12px; }
+}
+
 /* Menu móvel: somente quando a navegação horizontal deixaria de caber confortavelmente. */
 @media (max-width: 720px) {
   body.nav-open { overflow: hidden; }
