@@ -1,5 +1,5 @@
 export const site = {
-  name: 'Felex',
+  name: 'FelexTech',
   role: 'Desenvolvedor de Integração, Automação e Agentes de IA',
   location: 'São Paulo, Brasil',
   email: 'guilherme.felex@hotmail.com',
