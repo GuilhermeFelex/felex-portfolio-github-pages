@@ -75,6 +75,20 @@
 .stack-list li:nth-child(-n + 6) { border-bottom: 1px solid var(--line); }
 .stack-list .stack-mark { display: grid; width: 34px; height: 34px; place-items: center; color: var(--accent); }
 .stack-mark svg { display: block; width: 27px; height: 27px; fill: currentColor; }
+.stack-mark img { display: block; width: 28px; height: 28px; object-fit: contain; }
+.stack-mark .aws-wordmark { position: relative; color: #ffad33; font: 700 18px/1 var(--sans); letter-spacing: -.09em; }
+.stack-mark .aws-wordmark::after { position: absolute; right: -1px; bottom: -5px; left: 1px; height: 4px; border-bottom: 2px solid currentColor; border-radius: 0 0 50% 50%; content: ''; transform: skewX(-18deg); }
+
+/* Cores de marca facilitam o reconhecimento sem alterar a grade ou sua responsividade. */
+.stack-mark[data-brand='Next.js'], .stack-mark[data-brand='OpenAI'] { color: #e7eef2; }
+.stack-mark[data-brand='React'] { color: #61dafb; }
+.stack-mark[data-brand='TypeScript'] { color: #3178c6; }
+.stack-mark[data-brand='Node.js'] { color: #83cd29; }
+.stack-mark[data-brand='PostgreSQL'] { color: #5d99c7; }
+.stack-mark[data-brand='Supabase'] { color: #3ecf8e; }
+.stack-mark[data-brand='Docker'] { color: #2496ed; }
+.stack-mark[data-brand='n8n'] { color: #ea4b71; }
+.stack-mark[data-brand='UiPath'] { color: #fa4616; }
 
 /* CTA final: continua chamando para ação sem romper o tema escuro. */
 .contact { display: flex; flex-direction: column; justify-content: space-between; min-height: 470px; margin: 0; padding: clamp(54px, 7vw, 88px) 42px; border-bottom: 1px solid var(--line); background: linear-gradient(110deg, #0c1a20, #091318); }
