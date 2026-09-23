@@ -23,7 +23,7 @@ export const expertise = [
     icon: 'settings',
     title: 'Automação',
     description: 'Processos manuais transformados em fluxos confiáveis, mensuráveis e escaláveis.',
-    tags: ['RPA', 'n8n', 'Fluxos', 'Serviços']
+    tags: ['RPA', 'n8n', 'Fluxos', 'Processos']
   },
   {
     number: '03',
@@ -35,7 +35,7 @@ export const expertise = [
   {
     number: '04',
     icon: 'cube',
-    title: 'Produtos digitais',
+    title: 'Soluções digitais',
     description: 'Aplicações empresariais modulares, preparadas para crescer sem perder clareza.',
     tags: ['Next.js', 'React', 'TypeScript', 'PostgreSQL']
   }
@@ -51,7 +51,7 @@ export const projects = [
   },
   {
     number: '02',
-    title: 'Plataforma de atendimento e canais',
+    title: 'Operação multicanal',
     description: 'Conecta ERP, marketplaces e canais de atendimento para sincronizar pedidos, estoque e atualizações operacionais.',
     tags: ['Integrações', 'Marketplaces', 'Automação'],
     scope: 'Pedidos · estoque · atendimento'
